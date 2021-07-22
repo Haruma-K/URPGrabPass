@@ -2,7 +2,7 @@
   "name": "com.harumak.urpgrabpass",
   "displayName": "URPGrabPass",
   "version": "1.0.0",
-  "unity": "2020.2.3f1",
+  "unity": "2020.2",
   "license": "MIT",
   "dependencies": {
     "com.unity.render-pipelines.universal": "10.2.0"
