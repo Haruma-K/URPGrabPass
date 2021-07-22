@@ -21,7 +21,7 @@ namespace URPGrabPass.Runtime
             _grabbedTextureHandle.Init("_GrabbedTexture");
         }
 
-        public void Setup(RenderTargetIdentifier cameraColorTarget)
+        public void BeforeEnqueue(RenderTargetIdentifier cameraColorTarget)
         {
             _cameraColorTarget = cameraColorTarget;
         }
@@ -36,9 +36,7 @@ namespace URPGrabPass.Runtime
         {
             var cmd = CommandBufferPool.Get(nameof(GrabColorTexturePass));
             cmd.Clear();
-
             Blit(cmd, _cameraColorTarget, _grabbedTextureHandle.Identifier());
-
             context.ExecuteCommandBuffer(cmd);
             CommandBufferPool.Release(cmd);
         }

@@ -38,7 +38,7 @@ namespace URPGrabPass.Runtime
 
         public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
         {
-            _grabColorTexturePass.Setup(renderer.cameraColorTarget);
+            _grabColorTexturePass.BeforeEnqueue(renderer.cameraColorTarget);
             renderer.EnqueuePass(_grabColorTexturePass);
             renderer.EnqueuePass(_useColorTexturePass);
         }
