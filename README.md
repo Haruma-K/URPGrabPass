@@ -1,5 +1,9 @@
 <h1 align="center">URP Grab Pass</h1>
 
+[![license](https://img.shields.io/badge/LICENSE-MIT-green.svg)](https://github.com/Haruma-K/URPGrabPass/blob/master/LICENSE.md)
+
+[日本語ドキュメント(Japanese Documents Available)](README_JA.md)
+
 Replacement for GrabPass in Unity's Universal Render Pipeline (URP).
 
 <p align="center">
