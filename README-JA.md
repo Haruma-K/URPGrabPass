@@ -15,6 +15,7 @@ Universal Render Pipeline(URP)においてGrabPass相当の機能を提供しま
   * 不透明オブジェクトの描画後
   * 半透明オブジェクトの描画後
 * そしてそれをシェーダ内で使用できます。
+* URPの\_CameraOpaqueTextureとの違いとして、半透明描画後のカラーテクスチャも取得できます。
 
 ## 要件
 Universal RP 10.2.0 以上  
