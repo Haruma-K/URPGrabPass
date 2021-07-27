@@ -14,7 +14,8 @@ Replacement for GrabPass in Unity's Universal Render Pipeline (URP).
 * You can get the camera's color texture at the following timings.
   * After drawing opaque objects
   * After drawing transparent objects
-* Then you can use it in your shader. 
+* Then you can use it in your shader.
+* In contrast to URP's \_CameraOpaqueTexture, you can also get the color texture after drawing semi-transparent objects.
 
 ## Requirement
 Universal RP 10.2.0 or higher.  
