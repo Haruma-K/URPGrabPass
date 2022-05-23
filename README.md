@@ -19,7 +19,8 @@ Replacement for GrabPass in Unity's Universal Render Pipeline (URP).
 
 ## Requirement
 Universal RP 10.2.0 or higher.  
-Unity2020.2.3f1 or higher.
+Unity2020.2.3f1 or higher.  
+VR is not supported.
 
 ## Usage
 
@@ -80,7 +81,7 @@ If you want to set the target version, specify it like follow.
   * Sample: https://github.com/Haruma-K/URPGrabPass/blob/master/Assets/Demo/Shaders/shader_demo_usegrabbedtexture.shader
 * Assign this shader to the material to render it.
   * Objects with this material will be rendered immediately after the texture is grabbed.
-    
+
 ## Demo
 1. Clone this repository.
 2. Open the following scene.

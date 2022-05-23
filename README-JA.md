@@ -19,7 +19,8 @@ Universal Render Pipeline(URP)においてGrabPass相当の機能を提供しま
 
 ## 要件
 Universal RP 10.2.0 以上  
-Unity2020.2.3f1 以上
+Unity2020.2.3f1 以上  
+VRデバイスは非サポート
 
 ## 使い方
 
