@@ -9,41 +9,45 @@ namespace URPGrabPass.Runtime
     /// </summary>
     public class GrabColorTexturePass : ScriptableRenderPass
     {
-        private readonly string _grabbedTextureName;
+        private const string GrabbedTextureIdentifier = "_GrabbedTexture";
 
-        private RenderTargetIdentifier _cameraColorTarget;
-        private RenderTargetHandle _grabbedTextureHandle;
+        private readonly RTHandle _grabbedTextureHandle;
+        private readonly string _grabbedTextureName;
+        private readonly int _grabbedTexturePropertyId;
+
+        private ScriptableRenderer _renderer;
 
         public GrabColorTexturePass(GrabTiming timing, string grabbedTextureName)
         {
             renderPassEvent = timing.ToRenderPassEvent();
             _grabbedTextureName = grabbedTextureName;
-            _grabbedTextureHandle.Init("_GrabbedTexture");
+            _grabbedTextureHandle = RTHandles.Alloc(GrabbedTextureIdentifier, GrabbedTextureIdentifier);
+            _grabbedTexturePropertyId = Shader.PropertyToID(_grabbedTextureName);
         }
 
-        public void BeforeEnqueue(RenderTargetIdentifier cameraColorTarget)
+        public void BeforeEnqueue(ScriptableRenderer renderer)
         {
-            _cameraColorTarget = cameraColorTarget;
+            _renderer = renderer;
         }
 
         public override void Configure(CommandBuffer cmd, RenderTextureDescriptor cameraTextureDescriptor)
         {
-            cmd.GetTemporaryRT(_grabbedTextureHandle.id, cameraTextureDescriptor);
-            cmd.SetGlobalTexture(_grabbedTextureName, _grabbedTextureHandle.Identifier());
+            cmd.GetTemporaryRT(_grabbedTexturePropertyId, cameraTextureDescriptor);
+            cmd.SetGlobalTexture(_grabbedTextureName, _grabbedTextureHandle.nameID);
         }
 
         public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
         {
             var cmd = CommandBufferPool.Get(nameof(GrabColorTexturePass));
             cmd.Clear();
-            Blit(cmd, _cameraColorTarget, _grabbedTextureHandle.Identifier());
+            Blit(cmd, _renderer.cameraColorTarget, _grabbedTextureHandle.nameID);
             context.ExecuteCommandBuffer(cmd);
             CommandBufferPool.Release(cmd);
         }
 
         public override void FrameCleanup(CommandBuffer cmd)
         {
-            cmd.ReleaseTemporaryRT(_grabbedTextureHandle.id);
+            cmd.ReleaseTemporaryRT(_grabbedTexturePropertyId);
         }
     }
 }
