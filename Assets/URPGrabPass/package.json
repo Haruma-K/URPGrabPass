@@ -1,7 +1,7 @@
 {
   "name": "com.harumak.urpgrabpass",
   "displayName": "URPGrabPass",
-  "version": "1.0.0",
+  "version": "1.0.7",
   "unity": "2020.2",
   "license": "MIT",
   "dependencies": {
