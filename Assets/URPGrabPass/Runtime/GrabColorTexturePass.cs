@@ -9,7 +9,6 @@ namespace URPGrabPass.Runtime
     /// </summary>
     public class GrabColorTexturePass : ScriptableRenderPass
     {
-        private const string GrabbedTextureIdentifier = "_GrabbedTexture";
 
         private readonly RTHandle _grabbedTextureHandle;
         private readonly string _grabbedTextureName;
@@ -21,7 +20,7 @@ namespace URPGrabPass.Runtime
         {
             renderPassEvent = timing.ToRenderPassEvent();
             _grabbedTextureName = grabbedTextureName;
-            _grabbedTextureHandle = RTHandles.Alloc(GrabbedTextureIdentifier, GrabbedTextureIdentifier);
+            _grabbedTextureHandle = RTHandles.Alloc(_grabbedTextureName, _grabbedTextureName);
             _grabbedTexturePropertyId = Shader.PropertyToID(_grabbedTextureName);
         }
 
